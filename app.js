@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
-app.use(session({ secret: 'Biolinkdepotorg', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+app.use(session({ secret: 'Biolinkdepotorg', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true  }));
 
 if (!isProduction) {
   app.use(errorhandler());
