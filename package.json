@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "node app",
+    "start": "ng serve",
     "build": "ng build --prod --bh ./ ",
     "test": "ng test",
     "lint": "ng lint --force",
