@@ -8,7 +8,8 @@
     "build": "ng build --prod --bh ./ ",
     "test": "ng test",
     "lint": "ng lint --force",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "pre-commit": [
     "lint"
