@@ -4,8 +4,7 @@
   "license": "MIT",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "postinstall": "ng build --aot -prod"
+    "start": "node app" 
   },
   "dependencies": {
     "body-parser": "1.15.0",
