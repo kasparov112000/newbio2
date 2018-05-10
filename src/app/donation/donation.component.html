@@ -1,0 +1,128 @@
+<div class="donation-page">
+
+  <div class="banner">
+    <div class="container">
+      <h1>{{ donation.title }}</h1>
+
+      <app-donation-meta [donation]="donation">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-outline-secondary"
+             [routerLink]="['/donate', donation.slug]">
+            <i class="ion-edit"></i> Edit Donation
+          </a>
+
+          <button class="btn btn-sm btn-outline-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteDonation()">
+            <i class="ion-trash-a"></i> Delete Donation
+          </button>
+        </span>
+
+        <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="donation.author"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <app-favorite-button
+            [donation]="donation"
+            (toggle)="onToggleFavorite($event)">
+            {{ donation.favorited ? 'Unfavorite' : 'Favorite' }} Donation <span class="counter">({{ donation.favoritesCount }})</span>
+          </app-favorite-button>
+        </span>
+
+      </app-donation-meta>
+    </div>
+  </div>
+
+  <div class="container page">
+
+    <div class="row donation-content">
+      <div class="col-md-12">
+
+        <div [innerHTML]="donation.body | markdown"></div>
+
+        <ul class="tag-list">
+          <li *ngFor="let tag of donation.tagList"
+            class="tag-default tag-pill tag-outline">
+            {{ tag }}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="donation-actions">
+      <app-donation-meta [donation]="donation">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-outline-secondary"
+             [routerLink]="['/editor', donation.slug]">
+            <i class="ion-edit"></i> Edit Donation
+          </a>
+
+          <button class="btn btn-sm btn-outline-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteDonation()">
+            <i class="ion-trash-a"></i> Delete Donation
+          </button>
+        </span>
+
+        <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="donation.author"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <app-favorite-button
+            [donation]="donation"
+            (toggle)="onToggleFavorite($event)">
+            {{ donation.favorited ? 'Unfavorite' : 'Favorite' }} Donation <span class="counter">({{ donation.favoritesCount }})</span>
+          </app-favorite-button>
+        </span>
+
+      </app-donation-meta>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 offset-md-2">
+
+        <div *appShowAuthed="true">
+          <app-list-errors [errors]="commentFormErrors"></app-list-errors>
+          <form class="card comment-form" (ngSubmit)="addComment()">
+            <fieldset [disabled]="isSubmitting">
+              <div class="card-block">
+                <textarea class="form-control"
+                  placeholder="Write a comment..."
+                  rows="3"
+                  [formControl]="commentControl"
+                ></textarea>
+              </div>
+              <div class="card-footer">
+                <img [src]="currentUser.image" class="comment-author-img" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                 Post Comment
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div *appShowAuthed="false">
+          <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this donation.
+        </div>
+
+        <app-donation-comment
+          *ngFor="let comment of comments"
+          [comment]="comment"
+          (deleteComment)="onDeleteComment(comment)">
+        </app-donation-comment>
+
+      </div>
+    </div>
+
+  </div>
+</div>

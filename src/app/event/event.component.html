@@ -1,0 +1,135 @@
+<div class="event-page">
+
+  <div class="banner">
+    <div class="container">
+      <h1>{{ event.title }}</h1>
+
+      <app-event-meta [event]="event">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-outline-secondary"
+             [routerLink]="['/matrix', event.slug]">
+            <i class="ion-edit"></i> Edit Event
+          </a>
+
+          <button class="btn btn-sm btn-outline-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteEvent()">
+            <i class="ion-trash-a"></i> Delete Event
+          </button>
+        </span>
+
+        <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="event.author"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <app-favorite1-button
+            [event]="event"
+            (toggle)="onToggleFavorite($event)">
+            {{ event.favorited ? 'Unfavorite' : 'Favorite' }} Event <span class="counter">({{ event.favoritesCount }})</span>
+          </app-favorite1-button>
+
+          <app-attend-button
+            [event]="event"
+            (toggle)="onToggleAttending($event)">
+          </app-attend-button>
+
+
+        </span>
+
+      </app-event-meta>
+    </div>
+  </div>
+
+  <div class="container page">
+
+    <div class="row event-content">
+      <div class="col-md-12">
+
+        <div [innerHTML]="event.body | markdown"></div>
+
+        <ul class="tag-list">
+          <li *ngFor="let tag of event.tagList"
+            class="tag-default tag-pill tag-outline">
+            {{ tag }}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="event-actions">
+      <app-event-meta [event]="event">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-outline-secondary"
+             [routerLink]="['/matrix', event.slug]">
+            <i class="ion-edit"></i> Edit Event
+          </a>
+
+          <button class="btn btn-sm btn-outline-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteEvent()">
+            <i class="ion-trash-a"></i> Delete Event
+          </button>
+        </span>
+
+        <span [hidden]="canModify">
+          <app-follow-button
+            [profile]="event.author"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+
+          <app-favorite1-button
+            [event]="event"
+            (toggle)="onToggleFavorite($event)">
+            {{ event.favorited ? 'Unfavorite' : 'Favorite' }} Event <span class="counter">({{ event.favoritesCount }})</span>
+          </app-favorite1-button>
+        </span>
+
+      </app-event-meta>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 offset-md-2">
+
+        <div *appShowAuthed="true">
+          <app-list-errors [errors]="commentFormErrors"></app-list-errors>
+          <form class="card comment-form" (ngSubmit)="addComment()">
+            <fieldset [disabled]="isSubmitting">
+              <div class="card-block">
+                <textarea class="form-control"
+                  placeholder="Write a comment..."
+                  rows="3"
+                  [formControl]="commentControl"
+                ></textarea>
+              </div>
+              <div class="card-footer">
+                <img [src]="currentUser.image" class="comment-author-img" />
+                <button class="btn btn-sm btn-primary" type="submit">
+                 Post Comment
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div *appShowAuthed="false">
+          <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this event.
+        </div>
+
+        <app-event-comment
+          *ngFor="let comment of comments"
+          [comment]="comment"
+          (deleteComment)="onDeleteComment(comment)">
+        </app-event-comment>
+
+      </div>
+    </div>
+
+  </div>
+</div>
