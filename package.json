@@ -2,6 +2,7 @@
   "name": "ang2-Biolinkdepot.org",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
     "start": "node app",
