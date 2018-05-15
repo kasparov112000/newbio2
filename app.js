@@ -24,32 +24,16 @@ app.use(bodyParser.json());
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
-app.use(session({ secret: 'Biolinkdepotorg', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true  }));
-
-
-// Access the session as req.session
-app.get('/', function(req, res, next) {
-  if (req.session.views) {
-    req.session.views++
-    res.setHeader('Content-Type', 'text/html')
-    res.write('<p>views: ' + req.session.views + '</p>')
-    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
-    res.end()
-  } else {
-    req.session.views = 1
-    res.end('welcome to the session demo. refresh!')
-  }
-})
+app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 if (!isProduction) {
   app.use(errorhandler());
 }
-var dbURI =  'mongodb://monica:monica111@ds153948.mlab.com:53948/renatotasklist';
+
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-
-   mongoose.connect(dbURI);
+  mongoose.connect(dbURI);
   // mongoose.connect('mongodb://localhost/Biolinkdepot');
   mongoose.set('debug', true);
 }
