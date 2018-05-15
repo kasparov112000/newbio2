@@ -31,9 +31,11 @@ if (!isProduction) {
 }
 
 var dbURI =  'mongodb://monica:monica111@ds153948.mlab.com:53948/renatotasklist';
-              
+
+
 if(isProduction){
-  mongoose.connect(process.env.MONGODB_URI);
+ // mongoose.connect(process.env.MONGODB_URI);
+  mongoose.connect(dbURI);
 } else {
   mongoose.connect(dbURI);
   // mongoose.connect('mongodb://localhost/Biolinkdepot');
@@ -46,7 +48,6 @@ require('./models/Donation');
 require('./models/Event');
 require('./models/Comment');
 require('./config/passport');
-
 app.use(require('./routes'));
 
 /// catch 404 and forward to error handler
