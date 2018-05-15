@@ -39,7 +39,7 @@
     "ejs": "2.4.1",
     "errorhandler": "1.4.3",
     "express": "4.13.4",
-    "express-jwt": "3.3.0",
+    "express-jwt": "github:auth0/express-jwt",
     "express-session": "1.13.0",
     "jsonwebtoken": "7.1.9",
     "marked": "^0.3.9",
