@@ -7,5 +7,5 @@ export const environment = {
   production: false,
   // api_url: 'https://Biolinkdepot.org.productionready.io/api'
   api_url: 'http://localhost:3000/api',
-  secret: 'biolinkdepotorg'
+  secret: 'conduit'
 };

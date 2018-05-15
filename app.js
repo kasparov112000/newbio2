@@ -30,6 +30,8 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
+var dbURI =  'mongodb://monica:monica111@ds153948.mlab.com:53948/renatotasklist';
+
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
@@ -80,6 +82,7 @@ app.use(function(err, req, res, next) {
     error: {}
   }});
 });
+
 
 // finally, let's start our server...
 var server = app.listen( process.env.PORT || 3000, function(){
