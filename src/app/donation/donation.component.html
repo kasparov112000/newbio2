@@ -25,11 +25,11 @@
             (toggle)="onToggleFollowing($event)">
           </app-follow-button>
 
-          <app-favorite-button
+          <app-favorite2-button
             [donation]="donation"
             (toggle)="onToggleFavorite($event)">
             {{ donation.favorited ? 'Unfavorite' : 'Favorite' }} Donation <span class="counter">({{ donation.favoritesCount }})</span>
-          </app-favorite-button>
+          </app-favorite2-button>
         </span>
 
       </app-donation-meta>
@@ -77,11 +77,11 @@
             (toggle)="onToggleFollowing($event)">
           </app-follow-button>
 
-          <app-favorite-button
+          <app-favorite2-button
             [donation]="donation"
             (toggle)="onToggleFavorite($event)">
             {{ donation.favorited ? 'Unfavorite' : 'Favorite' }} Donation <span class="counter">({{ donation.favoritesCount }})</span>
-          </app-favorite-button>
+          </app-favorite2-button>
         </span>
 
       </app-donation-meta>

@@ -49,7 +49,7 @@ export class BlogComponent implements OnInit {
       (userData: User) => {
         this.currentUser = userData;
 
-        this.canModify = (this.currentUser.username === this.blog.author.username);
+        this.canModify = (this.currentUser.username === this.blog.author.username) || this.currentUser.isAdmin;
       }
     );
   }

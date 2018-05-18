@@ -8,7 +8,7 @@ import { FavoriteButtonComponent, FollowButtonComponent, AttendButtonComponent }
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { EventListComponent, EventPreviewComponent, EventMetaComponent } from './event-helpers';
-import { Favorite1ButtonComponent } from './buttons/favorite1-button.component';
+import { Favorite1ButtonComponent, Favorite2ButtonComponent } from './buttons';
 import { MarkdownPipe } from './blog-helpers/markdown.pipe';
 import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent } from '.';
 
@@ -33,6 +33,7 @@ import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent 
     EventPreviewComponent,
     FavoriteButtonComponent,
     Favorite1ButtonComponent,
+    Favorite2ButtonComponent,
     FollowButtonComponent,
     AttendButtonComponent,
     ListErrorsComponent,
@@ -53,6 +54,7 @@ import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent 
     CommonModule,
     FavoriteButtonComponent,
     Favorite1ButtonComponent,
+    Favorite2ButtonComponent,
     FollowButtonComponent,
     AttendButtonComponent,
     FormsModule,

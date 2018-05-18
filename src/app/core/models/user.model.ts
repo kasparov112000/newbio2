@@ -3,5 +3,8 @@ export interface User {
   token: string;
   username: string;
   bio: string;
+  rAdmin: boolean;
+  isAdmin: boolean;
   image: string;
+
 }

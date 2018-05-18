@@ -8,6 +8,8 @@ var UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bio: String,
+  rAdmin: Boolean,
+  isAdmin: Boolean,
   image: String,
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -36,6 +38,7 @@ UserSchema.methods.generateJWT = function() {
   return jwt.sign({
     id: this._id,
     username: this.username,
+    isadmin: this.isAdmin,
     exp: parseInt(exp.getTime() / 1000),
   }, secret);
 };
@@ -46,6 +49,8 @@ UserSchema.methods.toAuthJSON = function(){
     email: this.email,
     token: this.generateJWT(),
     bio: this.bio,
+    rAdmin: this.rAdmin,
+    isAdmin: this.isAdmin,
     image: this.image
   };
 };
@@ -54,6 +59,8 @@ UserSchema.methods.toProfileJSONFor = function(user){
   return {
     username: this.username,
     bio: this.bio,
+    rAdmin: this.rAdmin,
+    isAdmin: this.isAdmin,
     image: this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg',
     following: user ? user.isFollowing(this._id) : false 
   };

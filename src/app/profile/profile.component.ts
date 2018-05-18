@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   profile: Profile;
   currentUser: User;
   isUser: boolean;
+  isAdmin: boolean;
 
   ngOnInit() {
     this.route.data.pipe(
@@ -28,6 +29,7 @@ export class ProfileComponent implements OnInit {
           (userData: User) => {
             this.currentUser = userData;
             this.isUser = (this.currentUser.username === this.profile.username);
+            this.isAdmin = (this.currentUser.isAdmin === this.profile.isAdmin);
           }
         ));
       })

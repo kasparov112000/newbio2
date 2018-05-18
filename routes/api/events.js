@@ -151,8 +151,9 @@ router.get('/:event', auth.optional, function(req, res, next) {
 
 // update event
 router.put('/:event', auth.required, function(req, res, next) {
+  console.log(JSON.stringify(req.payload));
   User.findById(req.payload.id).then(function(user){
-    if(req.event.author._id.toString() === req.payload.id.toString()){
+    if(req.event.author._id.toString() === req.payload.id.toString() || req.payload.isadmin){
       if(typeof req.body.event.title !== 'undefined'){
         req.event.title = req.body.event.title;
       }

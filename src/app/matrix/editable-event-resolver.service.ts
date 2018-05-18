@@ -23,7 +23,8 @@ export class EditableEventResolver implements Resolve<Event> {
       .pipe(
         map(
           event => {
-            if (this.userService.getCurrentUser().username === event.author.username) {
+            if ((this.userService.getCurrentUser().username === event.author.username)
+            || this.userService.getCurrentUser().isAdmin) {
               return event;
             } else {
               this.router.navigateByUrl('/');

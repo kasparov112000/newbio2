@@ -33,10 +33,19 @@
                 class="form-control form-control-lg"
                 type="password" />
             </fieldset>
+            <h4 class="text-xs-center" *ngIf="authType == 'register'" >Request Admin Access</h4>
+            <fieldset class="form-group">              
+              <input
+                formControlName="rAdmin" id="rAdmin"
+                class="form-control form-control-lg"
+                *ngIf="authType == 'register'" 
+                type="checkbox"/>
+            </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>
           </fieldset>
+         
         </form>
       </div>
 

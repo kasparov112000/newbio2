@@ -24,7 +24,8 @@ export class AuthComponent implements OnInit {
     // use FormBuilder to create a form group
     this.authForm = this.fb.group({
       'email': ['', Validators.required],
-      'password': ['', Validators.required]
+      'password': ['', Validators.required],
+      'isAdmin': ['']
     });
   }
 
@@ -37,6 +38,7 @@ export class AuthComponent implements OnInit {
       // add form control for username if this is the register page
       if (this.authType === 'register') {
         this.authForm.addControl('username', new FormControl());
+        this.authForm.addControl('rAdmin', new FormControl());
       }
     });
   }

@@ -8,24 +8,24 @@ import { map } from 'rxjs/operators/map';
 
 @Injectable()
 export class DonationsService {
-  constructor (
+  constructor(
     private apiService: ApiService
-  ) {}
+  ) { }
 
-  query(config: DonationListConfig): Observable<{donations: Donation[], donationsCount: number}> {
+  query(config: DonationListConfig): Observable<{ donations: Donation[], donationsCount: number }> {
     // Convert any filters over to Angular's URLSearchParams
     const params = {};
 
     Object.keys(config.filters)
-    .forEach((key) => {
-      params[key] = config.filters[key];
-    });
+      .forEach((key) => {
+        params[key] = config.filters[key];
+      });
 
     return this.apiService
-    .get(
-      '/donations' + ((config.type === 'feed') ? '/feed' : ''),
-      new HttpParams({ fromObject: params })
-    );
+      .get(
+        '/donations' + ((config.type === 'feed') ? '/feed' : ''),
+        new HttpParams({ fromObject: params })
+      );
   }
 
   get(slug): Observable<Donation> {
@@ -40,12 +40,12 @@ export class DonationsService {
   save(donation): Observable<Donation> {
     // If we're updating an existing donation
     if (donation.slug) {
-      return this.apiService.put('/donations/' + donation.slug, {donation: donation})
+      return this.apiService.put('/donations/' + donation.slug, { donation: donation })
         .pipe(map(data => data.donation));
 
-    // Otherwise, create a new donation
+      // Otherwise, create a new donation
     } else {
-      return this.apiService.post('/donations/', {donation: donation})
+      return this.apiService.post('/donations/', { donation: donation })
         .pipe(map(data => data.donation));
     }
   }

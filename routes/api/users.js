@@ -33,6 +33,14 @@ router.put('/user', auth.required, function(req, res, next){
       user.setPassword(req.body.user.password);
     }
 
+    if(typeof req.body.user.rAdmin !== 'undefined'){
+      user.rAdmin = req.body.user.rAdmin;
+    }
+
+    if(typeof req.body.user.isAdmin !== 'undefined'){
+      user.isAdmin = req.body.user.isAdmin;
+    }
+
     return user.save().then(function(){
       return res.json({user: user.toAuthJSON()});
     });
@@ -65,6 +73,8 @@ router.post('/users', function(req, res, next){
 
   user.username = req.body.user.username;
   user.email = req.body.user.email;
+  user.rAdmin = req.body.user.rAdmin;
+  user.isAdmin = req.body.user.isAdmin;
   user.setPassword(req.body.user.password);
 
   user.save().then(function(){
