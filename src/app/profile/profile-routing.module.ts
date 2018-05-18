@@ -4,6 +4,7 @@ import { ProfileBlogsComponent } from './profile-blogs.component';
 import { ProfileFavoritesComponent } from './profile-favorites.component';
 import { ProfileResolver } from './profile-resolver.service';
 import { ProfileComponent } from './profile.component';
+import { ProfileEventsComponent } from './profile-events.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,12 @@ const routes: Routes = [
       {
         path: 'favorites',
         component: ProfileFavoritesComponent
+      },
+      {
+        path: 'events',
+        component: ProfileEventsComponent
       }
-    ]
+     ]
   }
 ];
 

@@ -1,12 +1,12 @@
 <div class="event-meta">
   <a [routerLink]="['/profile', event.author.username]">
-    <img [src]="event.author.image" />
+    <!-- <img [src]="event.author.image" /> -->
   </a>
 
   <div class="info">
     <a class="author"
       [routerLink]="['/profile', event.author.username]">
-      {{ event.author.username }}
+      Submitted By  {{ event.author.username }}
     </a>
     <span class="date">
       {{ event.createdAt | date: 'longDate' }}

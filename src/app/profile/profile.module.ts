@@ -7,6 +7,7 @@ import { ProfileFavoritesComponent } from './profile-favorites.component';
 import { ProfileResolver } from './profile-resolver.service';
 import { SharedModule } from '../shared';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileEventsComponent } from './profile-events.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ProfileRoutingModule } from './profile-routing.module';
   declarations: [
     ProfileBlogsComponent,
     ProfileComponent,
-    ProfileFavoritesComponent
+    ProfileFavoritesComponent,
+    ProfileEventsComponent
   ],
   providers: [
     ProfileResolver
