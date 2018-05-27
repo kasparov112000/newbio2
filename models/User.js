@@ -16,9 +16,9 @@ var UserSchema = new mongoose.Schema({
   attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }],  
   hash: String,
   salt: String
-}, {timestamps: true});
+}, {timestamps: true}, {usePushEach: true});
 
-UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
+UserSchema.plugin(uniqueValidator, {message: '{VALUE}, expected {PATH} to be unique.' });
 
 UserSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');

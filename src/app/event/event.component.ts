@@ -13,7 +13,8 @@ import {
 
 @Component({
   selector: 'app-event-page',
-  templateUrl: './event.component.html'
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
   event: Event;
@@ -43,6 +44,7 @@ export class EventComponent implements OnInit {
         this.populateComments();
       }
     );
+
 
     // Load the current user's data
     this.userService.currentUser.subscribe(

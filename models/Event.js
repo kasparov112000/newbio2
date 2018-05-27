@@ -13,7 +13,7 @@ var EventSchema = new mongoose.Schema({
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-}, {timestamps: true});
+}, {timestamps: true},  {usePushEach: true});
 
 EventSchema.plugin(uniqueValidator, {message: 'is already taken'});
 
@@ -34,10 +34,9 @@ EventSchema.methods.updateFavoriteCount = function() {
 
   return User.count({favorites: {$in: [event._id]}}).then(function(count){
     event.favoritesCount = count;
-
-    return event.save();
   });
 };
+
 
 EventSchema.methods.toJSONFor = function(user){
   return {
@@ -49,8 +48,9 @@ EventSchema.methods.toJSONFor = function(user){
     updatedAt: this.updatedAt,
     tagList: this.tagList,  
     attending: user ? user.isAttending(this._id) : false, 
-    favorited: user ? user.isFavorite(this._id) : false,
+    favorited: user ? user.isFavorite(this._id) : false,    
     favoritesCount: this.favoritesCount,
+    attendingCount: this.attendingCount,
     author: this.author.toProfileJSONFor(user)
   };
 };

@@ -46,6 +46,16 @@
                  Favorited Posts
               </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   routerLinkActive="active"
+                   [routerLinkActiveOptions]="{ exact: true }"
+                   [routerLink]="['/profile', profile.username, 'aevents']">
+                   Attending Events
+                </a>
+              </li>
+
             <li class="nav-item">
                 <a class="nav-link"
                    routerLinkActive="active"

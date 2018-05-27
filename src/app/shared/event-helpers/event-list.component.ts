@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Event, EventListConfig, EventsService } from '../../core';
 @Component({
   selector: 'app-event-list',
-  styleUrls: ['event-list.component.css'],
+  styleUrls: ['event-list.component.scss'],
   templateUrl: './event-list.component.html'
 })
 export class EventListComponent {

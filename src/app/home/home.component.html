@@ -1,18 +1,19 @@
 <div class="home-page">
   <div class="container">
-  <div class="banner" *appShowAuthed="false">
+  <!-- <div class="banner" *appShowAuthed="true">
     <div class="container">
       <h2 class="logo-font">Biolinkdepot.org</h2>
       <p>   Bio-Link Depot gives donated lab supplies and equipment 
         a new life in schools  .</p>
     </div>
-  </div>  
+  </div> -->
 
-  <div class="container page">
+  <div class="container page">    
     <div class="row">
       <div class="col-md-9">
-        <app-blog-list [limit]="10" [config]="listConfig"></app-blog-list>
+        <app-blog-list [limit]="10" [frontPage] = "true" [config]="listConfig"></app-blog-list>
       </div>
     </div>
   </div>
 </div>
+ 

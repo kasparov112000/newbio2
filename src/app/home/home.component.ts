@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   isAuthenticated: boolean;
+  frontPage: true;
+
   listConfig: BlogListConfig = {
     type: 'all',
     filters: {}
@@ -41,7 +43,7 @@ export class HomeComponent implements OnInit {
     .subscribe(tags => {
       this.tags = tags;
       this.tagsLoaded = true;
-    });
+      });
   }
 
   setListTo(type: string = '', filters: Object = {}) {

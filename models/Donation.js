@@ -14,11 +14,11 @@ var DonationSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {timestamps: true});
 
-DonationSchema.plugin(uniqueValidator, {message: 'is already taken'});
+DonationSchema.plugin(uniqueValidator, {message: '{VALUE} {TYPE} Error, expected {PATH} to be unique.' });
 
 DonationSchema.pre('validate', function(next){
   if(!this.slug)  {
-    this.slugify();
+    this.slugify(); 
   }
 
   next();

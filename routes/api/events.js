@@ -35,7 +35,7 @@ router.get('/', auth.optional, function(req, res, next) {
 
   if(typeof req.query.limit !== 'undefined'){
     limit = req.query.limit;
-  }
+  } 
 
   if(typeof req.query.offset !== 'undefined'){
     offset = req.query.offset;
@@ -47,10 +47,13 @@ router.get('/', auth.optional, function(req, res, next) {
 
   Promise.all([
     req.query.author ? User.findOne({username: req.query.author}) : null,
-    req.query.favorited ? User.findOne({username: req.query.favorited}) : null
+    req.query.favorited ? User.findOne({username: req.query.favorited}) : null,
+    req.query.attending ? User.findOne({username: req.query.attending}) : null
+
   ]).then(function(results){
     var author = results[0];
     var favoriter = results[1];
+    var attender = results[2];
 
     if(author){
       query.author = author._id;
@@ -59,6 +62,12 @@ router.get('/', auth.optional, function(req, res, next) {
     if(favoriter){
       query._id = {$in: favoriter.favorites};
     } else if(req.query.favorited){
+      query._id = {$in: []};
+    }
+
+    if(attender){
+      query._id = {$in: attender.attending};
+    } else if(req.query.attending){
       query._id = {$in: []};
     }
 
@@ -75,6 +84,7 @@ router.get('/', auth.optional, function(req, res, next) {
       var events = results[0];
       var eventsCount = results[1];
       var user = results[2];
+      
 
       return res.json({
         events: events.map(function(event){
@@ -193,11 +203,12 @@ router.delete('/:event', auth.required, function(req, res, next) {
     }
   }).catch(next);
 });
-
 // Favorite an event
-router.post('/:event/favorite', auth.required, function(req, res, next) {
-  var eventId = req.event._id;
 
+// Favorite an blog
+router.post('/:event/favorite', auth.required, function(req, res, next) {
+  
+  var eventId = req.event._id;
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
 
@@ -222,7 +233,7 @@ router.post('/:event/attend', auth.required, function(req, res, next){
   }).catch(next);
 });
 
-// Unfavorite an event
+// Unfavorite an blog
 router.delete('/:event/favorite', auth.required, function(req, res, next) {
   var eventId = req.event._id;
 
@@ -232,7 +243,7 @@ router.delete('/:event/favorite', auth.required, function(req, res, next) {
     return user.unfavorite(eventId).then(function(){
       return req.event.updateFavoriteCount().then(function(event){
         return res.json({event: event.toJSONFor(user)});
-      });
+      }); 
     });
   }).catch(next);
 });
@@ -248,9 +259,6 @@ router.delete('/:event/unattend', auth.required, function(req, res, next){
     });
   }).catch(next);
 });
-
-
-
 
 
 // return an event's comments

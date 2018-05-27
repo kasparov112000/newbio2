@@ -1,3 +1,4 @@
+
 <div class="event-page">
 
   <div class="banner">
@@ -5,7 +6,6 @@
       <h1>{{ event.title }}</h1>
 
       <app-event-meta [event]="event">
-
           <span [hidden]="!canModify">
           <a class="btn btn-sm btn-outline-secondary"
              [routerLink]="['/matrix', event.slug]">
@@ -19,7 +19,7 @@
           </button>
         </span>
 
-        <span [hidden]="canModify">
+        <span>
           <app-follow-button
             [profile]="event.author"
             (toggle)="onToggleFollowing($event)">
@@ -36,9 +36,7 @@
             (toggle)="onToggleAttending($event)">
           </app-attend-button>
 
-
         </span>
-
       </app-event-meta>
     </div>
   </div>
@@ -49,7 +47,6 @@
       <div class="col-md-12">
 
         <div [innerHTML]="event.body | markdown"></div>
-
         <ul class="tag-list">
           <li *ngFor="let tag of event.tagList"
             class="tag-default tag-pill tag-outline">
@@ -84,11 +81,18 @@
             (toggle)="onToggleFollowing($event)">
           </app-follow-button>
 
-          <app-favorite1-button
+          <!-- <app-favorite1-button
             [event]="event"
             (toggle)="onToggleFavorite($event)">
-            {{ event.favorited ? 'Unfavorite' : 'Favorite' }} Event <span class="counter">({{ event.favoritesCount }})</span>
-          </app-favorite1-button>
+            {{ event.favorited ? 'Unfavorite' : 'Favorite' }} Event <span class="counter">({{   event.favoritesCount }})</span>
+          </app-favorite1-button> -->
+
+          <app-favorite1-button
+          [event]="event"
+          (toggle)="onToggleFavorite($event)">
+          {{ event.favorited ? 'Unfavorite' : 'Favorite' }} Event <span class="counter">({{ event.favoritesCount }})</span>
+        </app-favorite1-button>
+
         </span>
 
       </app-event-meta>

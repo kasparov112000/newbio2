@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Blog, BlogsService, UserService } from '../core';
-import { catchError } from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
+import { catchError ,  map } from 'rxjs/operators';
 
 @Injectable()
 export class EditableBlogResolver implements Resolve<Blog> {
@@ -23,7 +22,7 @@ export class EditableBlogResolver implements Resolve<Blog> {
       .pipe(
         map(
           blog => {
-            if (this.userService.getCurrentUser().username === blog.author.username) {
+            if (this.userService.getCurrentUser().username === blog.author.username || this.userService.getCurrentUser().isAdmin)  {
               return blog;
             } else {
               this.router.navigateByUrl('/');

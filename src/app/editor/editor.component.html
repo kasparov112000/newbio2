@@ -15,7 +15,7 @@
                 placeholder="Blog Title" />
             </fieldset>
 
-            <fieldset class="form-group">
+             <fieldset class="form-group">
               <input class="form-control"
                 formControlName="description"
                 type="text"
@@ -30,10 +30,34 @@
               </textarea>
             </fieldset>
 
+            <h4 class="text-xs-center">Publish in Front Page</h4>
+            <fieldset class="form-group">              
+              <input
+                formControlName="toFrontPage" id="toFrontPage"
+                class="form-control form-control-lg"
+                type="checkbox"/>
+            </fieldset>
+
+            <h4 [hidden] = "this.isAdmin" class="text-xs-center">Approved</h4>
+            <fieldset class="form-group">              
+                <input
+                  formControlName="approved" id="approved"
+                  class="form-control form-control-lg"
+                  type="checkbox"/>
+              </fieldset>
+
+              <h4 [hidden] = "this.isAdmin" class="text-xs-center">Show Only Preview</h4>
+              <fieldset class="form-group">              
+                  <input
+                    formControlName="showOnlyPreview" id="showOnlyPreview"
+                    class="form-control form-control-lg"
+                    type="checkbox"/>
+                </fieldset>
+
             <fieldset class="form-group">
               <input class="form-control"
                 type="text"
-                placeholder="Enter tags"
+                placeholder="enter tags and press enter"
                 [formControl]="tagField"
                 (keyup.enter)="addTag()" />
 

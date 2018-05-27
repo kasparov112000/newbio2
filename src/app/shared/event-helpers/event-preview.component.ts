@@ -9,13 +9,17 @@ import { Event } from '../../core';
 export class EventPreviewComponent {
   @Input() event: Event;
 
-  onToggleFavorite(favorited: boolean) {
-    this.event['favorited'] = favorited;
+  // onToggleFavorite(favorited: boolean) {
+  //   this.event['favorited'] = favorited;
 
-    if (favorited) {
-      this.event['favoritesCount']++;
-    } else {
-      this.event['favoritesCount']--;
-    }
+  //   if (favorited) {
+  //     this.event['favoritesCount']++;
+  //   } else {
+  //     this.event['favoritesCount']--;
+  //   }
+  // }
+
+  onToggleAttending(attending: boolean) {
+    this.event.attending = attending;
   }
 }

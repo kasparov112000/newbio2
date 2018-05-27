@@ -5,16 +5,19 @@ var User = mongoose.model('User');
 
 var BlogSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
+  toFrontPage: Boolean, 
+  approved: Boolean, 
+  showOnlyPreview: Boolean,
   title: String,
   description: String,
-  body: String,
+  body: String, 
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   tagList: [{ type: String }],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-}, {timestamps: true});
+}, {timestamps: true}); 
 
-BlogSchema.plugin(uniqueValidator, {message: 'is already taken'});
+BlogSchema.plugin(uniqueValidator, { message: '{VALUE} {TYPE} Error, expected {PATH} to be unique.' });
 
 BlogSchema.pre('validate', function(next){
   if(!this.slug)  {
@@ -44,6 +47,9 @@ BlogSchema.methods.toJSONFor = function(user){
     title: this.title,
     description: this.description,
     body: this.body,
+    toFrontPage: this.toFrontPage,
+    approved: this.approved,
+    showOnlyPreview: this.showOnlyPreview,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
     tagList: this.tagList,

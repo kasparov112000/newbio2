@@ -1,11 +1,14 @@
+ 
 <app-blog-preview
   *ngFor="let blog of results"
-  [blog]="blog">
+  [blog]="blog"
+  [frontPage]="frontPage"> 
 </app-blog-preview>
 
 <div class="app-blog-preview"
   [hidden]="!loading">
-  Loading blogs...
+  Loading pages...
+  
 </div>
 
 <div class="app-blog-preview"
@@ -15,15 +18,11 @@
 
 <nav [hidden]="loading || totalPages.length <= 1">
   <ul class="pagination">
-
     <li class="page-item"
       [ngClass]="{'active': pageNumber === currentPage}"
       *ngFor="let pageNumber of totalPages"
       (click)="setPageTo(pageNumber)">
-
       <a class="page-link" >{{ pageNumber }}</a>
-
     </li>
-
   </ul>
 </nav>

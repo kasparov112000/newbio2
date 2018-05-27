@@ -12,6 +12,7 @@ export class BlogListComponent {
   ) {}
 
   @Input() limit: number;
+  @Input() frontPage: boolean;
   @Input()
   set config(config: BlogListConfig) {
     if (config) {

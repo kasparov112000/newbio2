@@ -5,6 +5,7 @@ export interface EventListConfig {
     tag?: string,
     author?: string,
     favorited?: string,
+    attending?: string,
     limit?: number,
     offset?: number
   };

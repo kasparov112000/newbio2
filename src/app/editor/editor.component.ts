@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Blog, BlogsService } from '../core';
+import { Blog, BlogsService, UserService, User } from '../core';
 
 @Component({
   selector: 'app-editor-page',
@@ -19,21 +19,26 @@ export class EditorComponent implements OnInit {
     private blogsService: BlogsService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userService: UserService
   ) {
     // use the FormBuilder to create a form group
     this.blogForm = this.fb.group({
       title: '',
       description: '',
+      toFrontPage: '',
+      approved: '',
+      showOnlyPreview: '',
       body: ''
     });
-
     // Initialized tagList as empty array
     this.blog.tagList = [];
 
     // Optional: subscribe to value changes on the form
     // this.blogForm.valueChanges.subscribe(value => this.updateBlog(value));
   }
+
+  isAdmin: boolean;
 
   ngOnInit() {
     // If there's an blog prefetched, load it
@@ -43,6 +48,13 @@ export class EditorComponent implements OnInit {
         this.blogForm.patchValue(data.blog);
       }
     });
+
+      // Load the current user's data
+      this.userService.currentUser.subscribe(
+        (userData: User) => {
+          this.isAdmin = (userData.isAdmin);
+        }
+      );
   }
 
   addTag() {

@@ -7,7 +7,9 @@ import { Blog } from '../../core';
   templateUrl: './blog-preview.component.html'
 })
 export class BlogPreviewComponent {
+
   @Input() blog: Blog;
+  @Input() frontPage: boolean;
 
   onToggleFavorite(favorited: boolean) {
     this.blog['favorited'] = favorited;
@@ -17,5 +19,16 @@ export class BlogPreviewComponent {
     } else {
       this.blog['favoritesCount']--;
     }
+  }
+
+  showHidden() {
+
+    if (this.frontPage) {
+      if (!this.blog.approved || !this.blog.toFrontPage) {
+         return true;
+      }
+      return false;
+    }
+  return false;
   }
 }

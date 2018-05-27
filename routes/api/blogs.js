@@ -131,7 +131,7 @@ router.post('/', auth.required, function(req, res, next) {
     blog.author = user;
 
     return blog.save().then(function(){
-      console.log(blog.author);
+      console.log(blog.toString);
       return res.json({blog: blog.toJSONFor(user)});
     });
   }).catch(next);
@@ -152,13 +152,25 @@ router.get('/:blog', auth.optional, function(req, res, next) {
 // update blog
 router.put('/:blog', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
-    if(req.blog.author._id.toString() === req.payload.id.toString()){
+    if(req.blog.author._id.toString() === req.payload.id.toString() || req.payload.isadmin ){
       if(typeof req.body.blog.title !== 'undefined'){
         req.blog.title = req.body.blog.title;
       }
 
       if(typeof req.body.blog.description !== 'undefined'){
         req.blog.description = req.body.blog.description;
+      }
+
+      if(typeof req.body.blog.toFrontPage !== 'undefined'){
+        req.blog.toFrontPage = req.body.blog.toFrontPage;
+      }
+
+      if(typeof req.body.blog.approved !== 'undefined'){
+        req.blog.approved = req.body.blog.approved;
+      }
+
+      if(typeof req.body.blog.showOnlyPreview !== 'undefined'){
+        req.blog.showOnlyPreview = req.body.blog.showOnlyPreview;
       }
 
       if(typeof req.body.blog.body !== 'undefined'){
@@ -183,7 +195,7 @@ router.delete('/:blog', auth.required, function(req, res, next) {
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
 
-    if(req.blog.author._id.toString() === req.payload.id.toString()){
+    if(req.blog.author._id.toString() === req.payload.id.toString() || req.payload.isadmin){
       return req.blog.remove().then(function(){
         return res.sendStatus(204);
       });
@@ -195,6 +207,7 @@ router.delete('/:blog', auth.required, function(req, res, next) {
 
 // Favorite an blog
 router.post('/:blog/favorite', auth.required, function(req, res, next) {
+  console.log(res.toString);
   var blogId = req.blog._id;
 
   User.findById(req.payload.id).then(function(user){

@@ -10,5 +10,8 @@ export interface Blog {
   updatedAt: string;
   favorited: boolean;
   favoritesCount: number;
+  toFrontPage: boolean;
+  approved: boolean;
+  showOnlyPreview: boolean;
   author: Profile;
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { FirstPageComponent } from './first-page/first-page.component';
+import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
     loadChildren: './profile/profile.module#ProfileModule'
   },
   {
+    path: 'first-page',
+    component: FirstPageComponent
+  },
+  {
+    path: 'dashboard',
+    component: AppMyDashboardComponent
+  },
+   {
     path: 'editor',
     loadChildren: './editor/editor.module#EditorModule'
   },
@@ -18,6 +28,7 @@ const routes: Routes = [
     path: 'matrix',
     loadChildren: './matrix/matrix.module#MatrixModule'
   },
+
   {
     path: 'donate',
     loadChildren: './donate/donate.module#DonateModule'
