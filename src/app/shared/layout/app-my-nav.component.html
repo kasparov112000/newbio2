@@ -2,7 +2,7 @@
   <mat-sidenav
     #drawer
     class="sidenav"
-    fixedInViewport="true"
+    fixedInViewport="false"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
 
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -10,7 +10,7 @@
     <mat-toolbar color="primary">Biolinkdepot.org</mat-toolbar>      
     <mat-nav-list>
       <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item routerLink="/blogs">Blogs</a>
+      <a mat-list-item routerLink="/">Blogs</a>
       <a mat-list-item routerLink="/events">Events</a>   
        <a mat-list-item routerLink=''>Profile</a>  
        <a mat-list-item routerLink="/dashboard">Inventory</a>    
@@ -30,7 +30,7 @@
               Donates
           </a>
            </section>
-           <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+           <button mat-button [matMenuTriggerFor]="animals">Menu</button>
            <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
 
            <mat-menu #animals="matMenu">
@@ -82,3 +82,4 @@
          <router-outlet></router-outlet> 
   </mat-sidenav-content>
 </mat-sidenav-container>
+
