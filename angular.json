@@ -18,12 +18,20 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "styles": [
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/purple-green.css"
               },
+              "src/assets/css/reset.css",
+              "src/assets/css/loading.css",
               "src/styles.scss"
             ],
             "scripts": []

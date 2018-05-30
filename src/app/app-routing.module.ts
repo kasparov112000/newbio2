@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { FirstPageComponent } from './first-page/first-page.component';
-import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
+ import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
 
 const routes: Routes = [
   {

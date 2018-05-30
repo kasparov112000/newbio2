@@ -12,6 +12,7 @@ import { EventRoutingModule } from './event-routing.module';
     SharedModule,
     EventRoutingModule
   ],
+  
   declarations: [
     EventComponent,
     EventCommentComponent,

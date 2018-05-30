@@ -12,7 +12,7 @@ import {
 } from '../core';
 
 @Component({
-  selector: 'app-event-page',
+  selector: 'app-event-component',
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss']
 })

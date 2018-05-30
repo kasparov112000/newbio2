@@ -37,7 +37,6 @@ import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent 
     FollowButtonComponent,
     AttendButtonComponent,
     ListErrorsComponent,
-
     ShowAuthedDirective,
     MarkdownPipe
   ],

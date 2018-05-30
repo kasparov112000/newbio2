@@ -29,18 +29,15 @@ app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, s
 if (!isProduction) {
   app.use(errorhandler());
 }
-
 var dbURI =  'mongodb://omar:omar111@ds153948.mlab.com:53948/renatotasklist';
-
 if(isProduction){
  // mongoose.connect(process.env.MONGODB_URI);
   mongoose.connect(dbURI);
 } else {
- // mongoose.connect(dbURI);
-  mongoose.connect('mongodb://localhost/Biolinkdepot');
+  mongoose.connect(dbURI);
+  // mongoose.connect('mongodb://localhost/Biolinkdepot');
   mongoose.set('debug', true);
 }
-
 require('./models/User');
 require('./models/Blog');
 require('./models/Donation');
