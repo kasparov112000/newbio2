@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Blog, BlogsService, UserService, User } from '../core';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+
+
+const URL = 'http://localhost:3000/api/upload';
 
 @Component({
   selector: 'app-editor-page',
@@ -15,7 +19,9 @@ export class EditorComponent implements OnInit {
   errors: Object = {};
   isSubmitting = false;
 
-  constructor(
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+
+    constructor(
     private blogsService: BlogsService,
     private route: ActivatedRoute,
     private router: Router,
@@ -55,6 +61,14 @@ export class EditorComponent implements OnInit {
           this.isAdmin = (userData.isAdmin);
         }
       );
+
+      this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+      this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+           console.log('ImageUpload:uploaded:', item, status, response);
+           alert('File uploaded successfully');
+       };
+
+
   }
 
   addTag() {

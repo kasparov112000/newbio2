@@ -4,6 +4,21 @@ var Blog = mongoose.model('Blog');
 var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
 var auth = require('../auth');
+const multer = require('multer');
+const DIR = './uploads';
+
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + '.' + path.extname(file.originalname));
+  }
+});
+
+let upload = multer({storage: storage});
+
+
 
 // Preload blog objects on routes with ':blog'
 router.param('blog', function(req, res, next, slug) {
@@ -135,6 +150,22 @@ router.post('/', auth.required, function(req, res, next) {
       return res.json({blog: blog.toJSONFor(user)});
     });
   }).catch(next);
+});
+
+//upload file
+router.post('/upload',auth.required, upload.single('photo'), function (req, res) {
+  if (!req.file) {
+      console.log("No file received");
+      return res.send({
+        success: false
+      });
+  
+    } else {
+      console.log('file received');
+      return res.send({
+        success: true
+      })
+    }
 });
 
 // return a blog

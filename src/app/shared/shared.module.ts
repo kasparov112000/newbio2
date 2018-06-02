@@ -39,6 +39,7 @@ import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent 
     ListErrorsComponent,
     ShowAuthedDirective,
     MarkdownPipe
+
   ],
   exports: [
     BlogListComponent,

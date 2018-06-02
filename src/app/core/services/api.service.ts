@@ -13,8 +13,6 @@ export class ApiService {
     private jwtService: JwtService
   ) {}
 
-
-
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http.get(`${environment.api_url}${path}`, { params })
       ;

@@ -8,6 +8,7 @@ import { Home3Module } from './home3/home3.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressInterceptor } from './shared/interceptors/progress.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import {
   FooterComponent,
   HeaderComponent,
@@ -52,9 +53,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     MatCardModule,
     MatMenuModule
   ],
-
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService] },],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
