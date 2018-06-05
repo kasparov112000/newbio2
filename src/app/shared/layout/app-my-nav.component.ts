@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { User, UserService } from '../../core';
+import { User, UserService, Profile } from '../../core';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class AppMyNavComponent implements OnInit {
     );
   isAuthenticated: boolean;
   currentUser: User;
+  profile: Profile;
 
   constructor(private breakpointObserver: BreakpointObserver,
     private userService: UserService,

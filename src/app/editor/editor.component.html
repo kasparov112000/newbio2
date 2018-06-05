@@ -21,16 +21,22 @@
                 type="text"
                 placeholder="What's this blog about?" />
             </fieldset>
-
+<!-- 
             <fieldset class="form-group">
               <textarea class="form-control"
-                formControlName="body"
+                formControlName="body1"
                 rows="8"
                 placeholder="Write your blog (in markdown)">
               </textarea>
+            </fieldset> -->
+            
+            <fieldset class="form-group">
+                <td-text-editor formControlName="body" 
+                >
+              </td-text-editor>
             </fieldset>
-
-            <h4 class="text-xs-center">Publish in Front Page</h4>
+            
+            <h4 class="text-xs-center" [hidden] = "!this.isAdmin"> Publish in Front Page</h4>
             <fieldset class="form-group">              
               <input
                 formControlName="toFrontPage" id="toFrontPage"
@@ -41,6 +47,7 @@
             <h4 [hidden] = "!this.isAdmin" class="text-xs-center">Approved</h4>
             <fieldset class="form-group">              
                 <input
+                [hidden] = "!this.isAdmin"
                   formControlName="approved" id="approved"
                   class="form-control form-control-lg"
                   type="checkbox"/>
@@ -49,6 +56,7 @@
               <h4 [hidden] = "!this.isAdmin" class="text-xs-center">Show Only Preview</h4>
               <fieldset class="form-group">              
                   <input
+                  [hidden] = "!this.isAdmin"
                     formControlName="showOnlyPreview" id="showOnlyPreview"
                     class="form-control form-control-lg"
                     type="checkbox"/>
@@ -59,7 +67,8 @@
                 type="text"
                 placeholder="enter tags and press enter"
                 [formControl]="tagField"
-                (keyup.enter)="addTag()" />
+                (keyup.enter)="addTag()" 
+                 />
 
               <div class="tag-list">
                 <span *ngFor="let tag of blog.tagList"
@@ -78,11 +87,11 @@
 
           <!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader" /> -->
 
-          <button type="button" class="btn btn-success btn-s" 
+          <!-- <button type="button" class="btn btn-success btn-s" 
                 (click)="uploader.uploadAll()" 
                   [disabled]="!uploader.getNotUploadedItems().length" >
                    Upload an Image
-          </button>
+          </button> -->
 
         </form>
 

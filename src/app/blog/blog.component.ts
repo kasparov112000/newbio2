@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { TdTextEditorComponent } from '@covalent/text-editor';
 
 import {
   Blog,
@@ -24,6 +26,11 @@ export class BlogComponent implements OnInit {
   commentFormErrors = {};
   isSubmitting = false;
   isDeleting = false;
+  options: any = {
+    lineWrapping: false,
+    toolbar: false
+
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -48,7 +55,7 @@ export class BlogComponent implements OnInit {
     this.userService.currentUser.subscribe(
       (userData: User) => {
         this.currentUser = userData;
-
+        console.log('is this user admin ' + this.currentUser.isAdmin);
         this.canModify = (this.currentUser.username === this.blog.author.username) || this.currentUser.isAdmin;
       }
     );

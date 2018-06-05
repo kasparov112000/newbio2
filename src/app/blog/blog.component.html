@@ -40,9 +40,12 @@
 
     <div class="row blog-content">
       <div class="col-md-12">
-
-        <div [innerHTML]="blog.body | markdown"></div>
-
+<!-- 
+        <div [innerHTML]="blog.body | markdown"></div> -->
+        <div>
+          <td-markdown> {{ blog.body }}                
+          </td-markdown>
+        </div>
         <ul class="tag-list">
           <li *ngFor="let tag of blog.tagList"
             class="tag-default tag-pill tag-outline">

@@ -10,6 +10,11 @@
   box-shadow: 3px 0 6px rgba(0,0,0,.24);
   color: $primary--color;
 }
+
+.hero-header__image {
+  background-size: cover;
+}
+
 header {
   position: fixed;
   z-index: 999;

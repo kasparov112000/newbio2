@@ -29,7 +29,6 @@ import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { ProgressBarService } from './core/shared/progress-bar.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [AppMyDashboardComponent, AppComponent, AppMyNavComponent, FooterComponent, HeaderComponent, FirstPageComponent],
   imports: [
@@ -53,7 +52,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     MatCardModule,
     MatMenuModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService] },],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService] }, ],
 
   bootstrap: [AppComponent]
 })

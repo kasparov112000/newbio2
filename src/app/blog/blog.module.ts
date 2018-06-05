@@ -7,11 +7,15 @@ import { BlogResolver } from './blog-resolver.service';
 import { MarkdownPipe } from './markdown.pipe';
 import { SharedModule } from '../shared';
 import { BlogRoutingModule } from './blog-routing.module';
+import { CovalentTextEditorModule } from '@covalent/text-editor';
+import { CovalentMarkdownModule } from '@covalent/markdown';
 
 @NgModule({
   imports: [
     SharedModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    CovalentTextEditorModule,
+    CovalentMarkdownModule
   ],
   declarations: [
     BlogComponent,

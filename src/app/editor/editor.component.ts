@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Blog, BlogsService, UserService, User } from '../core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 
 const URL = 'http://localhost:3000/api/upload';
@@ -21,6 +22,20 @@ export class EditorComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '25rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no'
+  };
+
+  options: any = {
+    lineWrapping: true,
+    toolbar: true
+  };
+
     constructor(
     private blogsService: BlogsService,
     private route: ActivatedRoute,
@@ -35,8 +50,10 @@ export class EditorComponent implements OnInit {
       toFrontPage: '',
       approved: '',
       showOnlyPreview: '',
-      body: ''
+      body: '',
+      htmlContent: ''
     });
+
     // Initialized tagList as empty array
     this.blog.tagList = [];
 

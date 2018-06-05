@@ -6,7 +6,7 @@ import { BlogListConfig, TagsService, UserService } from '../core';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   constructor(
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  setListTo(type: string = '', filters: Object = {}) {
+  setListTo(type: string = 'feed', filters: Object = {}) {
     // If feed is requested but user is not authenticated, redirect to login
     if (type === 'feed' && !this.isAuthenticated) {
       this.router.navigateByUrl('/login');

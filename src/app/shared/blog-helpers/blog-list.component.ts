@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Blog, BlogListConfig, BlogsService } from '../../core';
 @Component({
   selector: 'app-blog-list',
-  styleUrls: ['blog-list.component.css'],
+  styleUrls: ['blog-list.component.scss'],
   templateUrl: './blog-list.component.html'
 })
 export class BlogListComponent {

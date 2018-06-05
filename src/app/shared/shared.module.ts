@@ -11,6 +11,7 @@ import { EventListComponent, EventPreviewComponent, EventMetaComponent } from '.
 import { Favorite1ButtonComponent, Favorite2ButtonComponent } from './buttons';
 import { MarkdownPipe } from './blog-helpers/markdown.pipe';
 import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent } from '.';
+import { CovalentMarkdownModule } from '@covalent/markdown';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { DonationListComponent, DonationPreviewComponent, DonationMetaComponent 
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    CovalentMarkdownModule
   ],
   declarations: [
 
