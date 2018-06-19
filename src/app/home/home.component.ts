@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
         // set the blog list accordingly
         if (authenticated) {
-          this.setListTo('all');
+          this.setListTo('feed');
         } else {
           this.setListTo('all');
         }

@@ -157,17 +157,7 @@ $link-default: #3498db;
   width: 0;
 }
 
-.btn {
-  background-color: $brand-secondary;
-  border: 1px solid #c6c6c6;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  color: green;
-  height: 36px;
-  &:hover {
-    cursor: pointer;
-  }
-}
+ 
 
 .highlight {
   color: $brand;
@@ -178,3 +168,9 @@ $link-default: #3498db;
 span[aria-hidden] {
   display: none;
 }
+
+.hero-header__image {
+  background-size: cover;
+}
+
+ 

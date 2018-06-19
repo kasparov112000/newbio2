@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-
 import { Event } from '../../core';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-event-preview',
@@ -8,7 +8,6 @@ import { Event } from '../../core';
 })
 export class EventPreviewComponent {
   @Input() event: Event;
-
   // onToggleFavorite(favorited: boolean) {
   //   this.event['favorited'] = favorited;
 

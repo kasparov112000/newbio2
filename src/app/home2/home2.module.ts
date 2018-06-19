@@ -5,11 +5,13 @@ import { Home2Component } from './home2.component';
 import { Home2AuthResolver } from './home2-auth-resolver.service';
 import { SharedModule } from '../shared';
 import { Home2RoutingModule } from './home2-routing.module';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   imports: [
     SharedModule,
-    Home2RoutingModule
+    Home2RoutingModule,
+    MatCardModule
   ],
   declarations: [
     Home2Component

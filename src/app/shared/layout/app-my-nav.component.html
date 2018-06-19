@@ -78,7 +78,16 @@
              <button mat-menu-item>Blue Spiny Lizard</button>
              <button mat-menu-item disabled>Velociraptor</button>
            </mat-menu> 
-
+            <!-- This fills the remaining space of the current row -->
+   <span class="example-spacer"></span>
+         
+   <mat-card-header>
+              <div mat-card-avatar class="hero-header__image"
+              [ngStyle]="{'background-image': 'currentUser.image'}"
+              >
+             </div>
+            </mat-card-header>
+              <!-- <button mat-button [matMenuTriggerFor]="login()">Login</button> -->
          </mat-toolbar>
          <router-outlet></router-outlet> 
   </mat-sidenav-content>

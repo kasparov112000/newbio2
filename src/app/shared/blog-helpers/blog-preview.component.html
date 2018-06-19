@@ -1,10 +1,10 @@
-<div class="blog-preview" [hidden]= "this.showHidden()" >
+<div class="col-md-22" [hidden]= "this.showHidden()" >
 
   <a [routerLink]="['/blog', blog.slug]" class="preview-link">
     <h1>{{ blog.title }}</h1>
     <p>{{ blog.description }}</p>
    
-    <div [hidden]="blog.showOnlyPreview && !frontPage">
+    <div  class="col-md-22" [hidden]="blog.showOnlyPreview && !frontPage">
     <td-markdown> {{ blog.body }} </td-markdown></div>
     
     <span>Read more...</span>
@@ -24,3 +24,4 @@
     </ul>
   </a>
 </div>
+  

@@ -2,11 +2,11 @@
 @import "mixins";
 
 .sidenav-container {
-  height: 90%;
+  height: 95%;
 }
 
 .sidenav {
-  width: 200px;
+  width: 175px;
   box-shadow: 3px 0 6px rgba(0,0,0,.24);
   color: $primary--color;
 }
@@ -23,7 +23,7 @@ header {
   nav {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: left;
     padding: calculateRem(8px) calculateRem(16px);
     color: $secondary--color;
     height: 4rem;
@@ -36,16 +36,22 @@ header {
 }
   }
  }
-  /* 
-  // define 3 theme color
-  // mat-palette accepts $palette-name, main, lighter and darker variants
-  $my-theme-primary: mat-palette($mat-indigo, 700, 300, 900);
-  $my-theme-accent: mat-palette($mat-light-blue);
-  $my-theme-warn: mat-palette($mat-deep-orange, A200);
+ .example-card {
+  max-width: 80px;
+  max-height: 40px;
+}
 
-  // create theme (use mat-dark-theme for themes with dark backgrounds)
-  $my-theme: mat-light-theme(
-      $my-theme-primary,
-      $my-theme-accent,
-      $my-theme-warn
-  ); */
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+  .example-spacer {
+    flex: auto;
+  }
+ 
+
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

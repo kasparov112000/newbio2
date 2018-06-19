@@ -11,13 +11,13 @@
     margin: {
       top: $vertically;
       bottom: $vertically;
-      left: auto;
-      right: auto;
+      left: 0;
+      right: 0;
     }
   } @else {
     margin: {
-      left: auto;
-      right: auto;
+      left: 0;
+      right: 0;
     }
   }
 }

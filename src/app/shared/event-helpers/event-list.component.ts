@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { SharedModule } from '../../shared';
 import { Event, EventListConfig, EventsService } from '../../core';
 @Component({
   selector: 'app-event-list',
