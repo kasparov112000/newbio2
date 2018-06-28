@@ -23,10 +23,7 @@ var routes = [
         path: 'first-page',
         component: first_page_component_1.FirstPageComponent
     },
-    {
-        path: 'dashboard',
-        component: my_dashboard_component_1.AppMyDashboardComponent
-    },
+
     {
         path: 'editor',
         loadChildren: './editor/editor.module#EditorModule'

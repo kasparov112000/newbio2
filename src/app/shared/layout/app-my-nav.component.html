@@ -14,7 +14,7 @@
       <a mat-list-item routerLink="/events">Events</a>   
        <a mat-list-item routerLink='/settings'>Profile</a>  
        <a mat-list-item routerLink="/dashboard">Inventory</a>    
-    </mat-nav-list>
+    </mat-nav-list> 
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -88,6 +88,15 @@
              </div>
             </mat-card-header>
               <!-- <button mat-button [matMenuTriggerFor]="login()">Login</button> -->
+              <p>
+                  <button mat-button *appShowAuthed="false" [routerLink]="['/login']">Sign in</button>   <button mat-button *appShowAuthed="false" [routerLink]="['/register']">sign up</button>
+                </p>
+               
+                <a routerLink="/profile/{{currentUser.username}}" >  <img [src]="currentUser.image" background-size:cover height="50" width="50"/> </a>
+                 <mat-card-header>
+                 <div mat-card-avatar class="example-header-image"></div>
+               </mat-card-header>
+                
          </mat-toolbar>
          <router-outlet></router-outlet> 
   </mat-sidenav-content>

@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { FirstPageComponent } from './first-page/first-page.component';
- import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
-
 const routes: Routes = [
   {
     path: 'settings',
@@ -12,14 +9,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: './profile/profile.module#ProfileModule'
   },
-  {
-    path: 'first-page',
-    component: FirstPageComponent
-  },
-  {
-    path: 'dashboard',
-    component: AppMyDashboardComponent
-  },
+
    {
     path: 'editor',
     loadChildren: './editor/editor.module#EditorModule'

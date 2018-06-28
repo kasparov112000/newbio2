@@ -33,6 +33,13 @@ export class AppMyNavComponent implements OnInit {
         this.isAuthenticated = authenticated;
       }
     );
+        // Load the current user's data
+        this.userService.currentUser.subscribe(
+          (userData: User) => {
+            this.currentUser = userData;
+            console.log('is this user admin ' + this.currentUser.isAdmin);
+          }
+        );
   }
   private loadMenus(): void {
 

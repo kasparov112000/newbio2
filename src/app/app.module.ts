@@ -24,13 +24,11 @@ import {
   MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatListModule, MatGridListModule, MatMenuModule
 } from '@angular/material';
-import { FirstPageComponent } from './first-page/first-page.component';
-import { AppMyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { ProgressBarService } from './core/shared/progress-bar.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 @NgModule({
-  declarations: [AppMyDashboardComponent, AppComponent, AppMyNavComponent, FooterComponent, HeaderComponent, FirstPageComponent],
+  declarations: [ AppComponent, AppMyNavComponent, FooterComponent, HeaderComponent],
   imports: [
     BrowserModule,
     FlexLayoutModule,
@@ -52,7 +50,7 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule,
     MatMenuModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService] }, ],
+  providers: [],
 
   bootstrap: [AppComponent]
 })
