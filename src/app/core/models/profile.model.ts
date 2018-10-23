@@ -6,4 +6,5 @@ export interface Profile {
   isAdmin: boolean;
   following: boolean;
   attending: boolean;
+  usePushEach: true;
 }

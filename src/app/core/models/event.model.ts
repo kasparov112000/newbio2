@@ -13,4 +13,5 @@ export interface Event {
   attending: boolean;
   favoritesCount: number;
   author: Profile;
+  usePushEach: true;
 }
